@@ -37,6 +37,7 @@ namespace Livraria.Infraestructure.Repositories
         public void Update(Publisher publisher)
         {
             _context.Entry<Publisher>(publisher).State = System.Data.Entity.EntityState.Modified;
+            _context.SaveChanges();
         }
 
         public void Delete(Publisher publisher)

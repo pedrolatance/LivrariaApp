@@ -61,7 +61,7 @@ namespace Livraria.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The book has been successfully updated..
+        ///   Looks up a localized string similar to Data was successfully updated..
         /// </summary>
         public static string SuccessfulyChanges {
             get {
@@ -70,7 +70,7 @@ namespace Livraria.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The book has been deleted successfully..
+        ///   Looks up a localized string similar to Data was deleted successfully..
         /// </summary>
         public static string SuccessfulyDelete {
             get {

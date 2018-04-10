@@ -5,6 +5,7 @@ using Livraria.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,11 +13,19 @@ namespace Livraria.Business.Services
 {
     public class CategoryService : ICategoyService
     {
+        #region Dependancy Injection
         private ICategoryRepository _repository;
 
         public CategoryService(ICategoryRepository repository)
         {
             this._repository = repository;
+        }
+        #endregion
+
+        #region Methods
+        public List<Category> GetAll()
+        {
+            return _repository.Get();
         }
 
         public Category GetById(int id)
@@ -45,6 +54,9 @@ namespace Livraria.Business.Services
         public void ChangeInformation(int id, string name)
         {
             var category = GetById(id);
+            var hasCategory = GetByName(name);
+            if (hasCategory != null)
+                throw new Exception(Errors.DuplicatedName);
 
             category.ChangeName(name);
             category.ValidateCategory();
@@ -62,6 +74,6 @@ namespace Livraria.Business.Services
         {
             _repository.Dispose();
         }
-
+        #endregion
     }
 }

@@ -36,7 +36,7 @@ namespace Livraria.Infraestructure.Repositories
         public void Update(Author author)
         {
             _context.Entry<Author>(author).State = System.Data.Entity.EntityState.Modified;
-
+            _context.SaveChanges();
         }
 
         public void Delete(Author author)

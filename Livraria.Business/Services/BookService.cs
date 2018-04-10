@@ -12,6 +12,7 @@ namespace Livraria.Business.Services
 {
     public class BookService : IBookService
     {
+        #region Dependancy Injection
         private IBookRepository _repository;
         private IAuthorRepository _authorRepository;
         private ICategoryRepository _categoryRepository;
@@ -25,7 +26,9 @@ namespace Livraria.Business.Services
             _categoryRepository = categoryRepository;
             _publisherRepository = publisherRepository;
         }
+        #endregion
 
+        #region Methods
         public List<Book> GetAll()
         {
             return _repository.Get();
@@ -64,6 +67,9 @@ namespace Livraria.Business.Services
         public void ChangeInformation(int id, string title, string isbn, int storageQty, int authorId, int categoryId, int publisherId)
         {
             var book = GetById(id);
+            var hasBook = _repository.Get(isbn);
+            if (hasBook != null)
+                throw new Exception(Errors.DuplicatedIsbn);
 
             book.ChangeDetails(title,isbn,storageQty);
             book.Author = _authorRepository.Get(authorId);
@@ -84,8 +90,7 @@ namespace Livraria.Business.Services
         {
             _repository.Dispose();
         }
-
-
+        #endregion
     }
 
 }

@@ -12,11 +12,19 @@ namespace Livraria.Business.Services
 {
     public class PublisherService : IPublisherService
     {
+        #region Dependancy Injection
         private IPublisherRepository _repository;
 
         public PublisherService(IPublisherRepository repository)
         {
             this._repository = repository;
+        }
+        #endregion
+
+        #region Methods
+        public List<Publisher> GetAll()
+        {
+            return _repository.Get();
         }
 
         public Publisher GetById(int id)
@@ -45,6 +53,10 @@ namespace Livraria.Business.Services
         public void ChangeInformation(int id, string name)
         {
             var publisher = GetById(id);
+            var hasPublisher = GetByName(name);
+            if (hasPublisher != null)
+                throw new Exception(Errors.DuplicatedName);
+
 
             publisher.ChangeName(name);
             publisher.ValidatePublisher();
@@ -62,5 +74,6 @@ namespace Livraria.Business.Services
         {
             _repository.Dispose();
         }
+        #endregion
     }
 }

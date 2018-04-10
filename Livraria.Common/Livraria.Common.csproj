@@ -67,6 +67,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Errors.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Msgs.pt-BR.resx" />
     <EmbeddedResource Include="Resources\Msgs.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Msgs.Designer.cs</LastGenOutput>

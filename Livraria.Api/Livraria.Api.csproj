@@ -53,6 +53,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Ionic.Zlib, Version=1.9.1.5, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ionic.Zlib.1.9.1.5\lib\Ionic.Zlib.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -77,6 +80,7 @@
     <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web.Cors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
     </Reference>
@@ -123,6 +127,12 @@
     <Reference Include="Unity.ServiceLocation, Version=2.1.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.8.5\lib\net47\Unity.ServiceLocation.dll</HintPath>
     </Reference>
+    <Reference Include="WebApi.OutputCache.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Strathweb.CacheOutput.WebApi2.0.11.0\lib\net45\WebApi.OutputCache.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="WebApi.OutputCache.V2, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Strathweb.CacheOutput.WebApi2.0.11.0\lib\net45\WebApi.OutputCache.V2.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -137,15 +147,33 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\DeflateCompressionAttribute.cs" />
+    <Compile Include="Controllers\AuthorController.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\PublisherController.cs" />
+    <Compile Include="Helpers\CompressionHelper.cs" />
     <Compile Include="Helpers\UnityResolver.cs" />
+    <Compile Include="Models\Author\ChangeAuthorModel.cs" />
+    <Compile Include="Models\Author\DeleteAuthorModel.cs" />
+    <Compile Include="Models\Author\RegisterAuthorModel.cs" />
     <Compile Include="Models\Book\ChangeBookModel.cs" />
     <Compile Include="Models\Book\DeleteBookModel.cs" />
     <Compile Include="Models\Book\RegisterBookModel.cs" />
+    <Compile Include="Models\Category\ChangeCategoryModel.cs" />
+    <Compile Include="Models\Category\DeleteCategoryModel.cs" />
+    <Compile Include="Models\Category\RegisterCategoryModel.cs" />
+    <Compile Include="Models\Publisher\ChangePublisherModel.cs" />
+    <Compile Include="Models\Publisher\DeletePublisherModel.cs" />
+    <Compile Include="Models\Publisher\RegisterPublisherModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Livraria.Business\Livraria.Business.csproj">
+      <Project>{204498BB-1674-42EC-A544-8C7526E4B220}</Project>
+      <Name>Livraria.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Livraria.Common\Livraria.Common.csproj">
       <Project>{92f6e347-b770-46e9-a382-4094658ca500}</Project>
       <Name>Livraria.Common</Name>
@@ -159,11 +187,7 @@
       <Name>Livraria.Startup</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Author\" />
-    <Folder Include="Models\Category\" />
-    <Folder Include="Models\Publisher\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

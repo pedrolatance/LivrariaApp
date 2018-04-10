@@ -1,22 +1,25 @@
-﻿using Livraria.Api.Models;
+﻿using Livraria.Api.Attributes;
+using Livraria.Api.Models.Category;
+using Livraria.Business.Services;
+using Livraria.Common.Resources;
 using Livraria.Domain.Contracts.Services;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Livraria.Common.Resources;
-using Livraria.Api.Attributes;
 using WebApi.OutputCache.V2;
 
 namespace Livraria.Api.Controllers
 {
-    public class BookController : ApiController
+    public class CategoryController : ApiController
     {
         #region Injeção de Dependencia
-        private IBookService _service;
+        private ICategoyService _service;
 
-        public BookController(IBookService service)
+        public CategoryController(ICategoyService service)
         {
             _service = service;
         }
@@ -24,7 +27,7 @@ namespace Livraria.Api.Controllers
 
         #region GetAll Method
         [DeflateCompression]
-        [CacheOutput(ClientTimeSpan =100, ServerTimeSpan =100)]
+        [CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)]
         public Task<HttpResponseMessage> Get()
         {
             HttpResponseMessage response = new HttpResponseMessage();
@@ -47,15 +50,14 @@ namespace Livraria.Api.Controllers
 
         #region Resgister Method
         [HttpPost]
-        public Task<HttpResponseMessage> Post(RegisterBookModel model)
+        public Task<HttpResponseMessage> Post(RegisterCategoryModel model)
         {
-            HttpResponseMessage response = new HttpResponseMessage(); 
+            HttpResponseMessage response = new HttpResponseMessage();
 
             try
             {
-                _service.Register(model.Title, model.ISBN, model.StorageQty,
-                    model.AuthorId, model.CategoryId, model.PublisherId);
-                response = Request.CreateResponse(HttpStatusCode.OK, new { Title = model.Title });
+                _service.Register(model.Name);
+                response = Request.CreateResponse(HttpStatusCode.OK, new { Title = model.Name });
             }
             catch (Exception ex)
             {
@@ -70,14 +72,13 @@ namespace Livraria.Api.Controllers
 
         #region Update Method
         [HttpPut]
-        public Task<HttpResponseMessage> Put(ChangeBookModel model)
+        public Task<HttpResponseMessage> Put(ChangeCategoryModel model)
         {
             HttpResponseMessage response = new HttpResponseMessage();
 
             try
             {
-                _service.ChangeInformation(model.Id, model.Title, model.ISBN,
-                    model.StorageQty, model.AuthorId, model.CategoryId, model.PublisherId);
+                _service.ChangeInformation(model.Id, model.Name);
                 response = Request.CreateResponse(HttpStatusCode.OK, Msgs.SuccessfulyChanges);
             }
             catch (Exception ex)
@@ -93,7 +94,7 @@ namespace Livraria.Api.Controllers
 
         #region Delete Method
         [HttpDelete]
-        public Task<HttpResponseMessage> Delete(DeleteBookModel model)
+        public Task<HttpResponseMessage> Delete(DeleteCategoryModel model)
         {
             HttpResponseMessage response = new HttpResponseMessage();
 
@@ -101,7 +102,6 @@ namespace Livraria.Api.Controllers
             {
                 _service.Delete(model.Id);
                 response = Request.CreateResponse(HttpStatusCode.OK, Msgs.SuccessfulyDelete);
-
             }
             catch (Exception ex)
             {

@@ -3,19 +3,27 @@ using Livraria.Domain.Contracts.Repositories;
 using Livraria.Domain.Contracts.Services;
 using Livraria.Domain.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Livraria.Business.Services
 {
     public class AuthorService : IAuthorService
     {
+        #region Dependancy Injection
         private IAuthorRepository _repository;
 
         public AuthorService(IAuthorRepository repository)
         {
             this._repository = repository;
         }
+        #endregion
 
+        #region Methods
+        public List<Author> GetAll()
+        {
+            return _repository.Get();
+        }
 
         public Author GetById(int id)
         {
@@ -43,6 +51,9 @@ namespace Livraria.Business.Services
         public void ChangeInformation(int id, string name)
         {
             var author = GetById(id);
+            var hasAuthor = GetByName(name);
+            if (hasAuthor != null)
+                throw new Exception(Errors.DuplicatedName);
 
             author.ChangeName(name);
             author.ValidateAuthor();
@@ -60,6 +71,6 @@ namespace Livraria.Business.Services
         {
             _repository.Dispose();
         }
-
+        #endregion
     }
 }

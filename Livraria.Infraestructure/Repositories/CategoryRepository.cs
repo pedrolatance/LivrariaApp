@@ -39,6 +39,7 @@ namespace Livraria.Infraestructure.Repositories
         public void Update(Category category)
         {
             _context.Entry<Category>(category).State = System.Data.Entity.EntityState.Modified;
+            _context.SaveChanges();
         }
 
         public void Delete(Category category)
