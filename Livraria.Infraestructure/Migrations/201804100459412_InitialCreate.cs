@@ -24,7 +24,6 @@ namespace Livraria.Infraestructure.Migrations
                         Title = c.String(nullable: false, maxLength: 200),
                         ISBN = c.String(nullable: false, maxLength: 12),
                         StorageQty = c.Int(nullable: false),
-                        ReleaseDate = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
                         Author_Id = c.Int(nullable: false),
                         Category_Id = c.Int(nullable: false),
                         Publisher_Id = c.Int(nullable: false),

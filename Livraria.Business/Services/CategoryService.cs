@@ -3,57 +3,59 @@ using Livraria.Domain.Contracts.Repositories;
 using Livraria.Domain.Contracts.Services;
 using Livraria.Domain.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Livraria.Business.Services
 {
-    public class AuthorService : IAuthorService
+    public class CategoryService : ICategoyService
     {
-        private IAuthorRepository _repository;
+        private ICategoryRepository _repository;
 
-        public AuthorService(IAuthorRepository repository)
+        public CategoryService(ICategoryRepository repository)
         {
             this._repository = repository;
         }
 
-
-        public Author GetById(int id)
+        public Category GetById(int id)
         {
             if (id <= 0)
-                throw new Exception(Errors.AuthorNotFound);
+                throw new Exception(Errors.CategoryNotFound);
 
             return _repository.Get(id); ;
         }
 
-        public Author GetByName(string name)
+        public Category GetByName(string name)
         {
             return _repository.Get().Where(x => x.Name == name).FirstOrDefault();
         }
 
         public void Register(string name)
         {
-            var hasAuthor = GetByName(name);
-            if (hasAuthor != null)
+            var hasCategory = GetByName(name);
+            if (hasCategory != null)
                 throw new Exception(Errors.DuplicatedName);
 
-            var author = new Author(name);
-            _repository.Create(author);
+            var category = new Category(name);
+            _repository.Create(category);
         }
 
         public void ChangeInformation(int id, string name)
         {
-            var author = GetById(id);
+            var category = GetById(id);
 
-            author.ChangeName(name);
-            author.ValidateAuthor();
+            category.ChangeName(name);
+            category.ValidateCategory();
 
-            _repository.Update(author);
+            _repository.Update(category);
         }
 
         public void Delete(int id)
         {
-            var author = GetById(id);
-            _repository.Delete(author);
+            var category = GetById(id);
+            _repository.Delete(category);
         }
 
         public void Dispose()

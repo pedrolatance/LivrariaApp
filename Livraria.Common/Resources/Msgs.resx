@@ -117,43 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AuthorNotFound" xml:space="preserve">
-    <value>Failed to retrieve requested author.</value>
+  <data name="SuccessfulyChanges" xml:space="preserve">
+    <value>The book has been successfully updated.</value>
   </data>
-  <data name="BookNotFound" xml:space="preserve">
-    <value>The book is not found.</value>
-  </data>
-  <data name="CategoryNotFound" xml:space="preserve">
-    <value>Failed to retrieve requested category.</value>
-  </data>
-  <data name="DuplicatedIsbn" xml:space="preserve">
-    <value>A book with this ISBN already exists.</value>
-  </data>
-  <data name="DuplicatedName" xml:space="preserve">
-    <value>The given name already exists.</value>
-  </data>
-  <data name="InformCategory" xml:space="preserve">
-    <value>You must enter a category for the book.</value>
-  </data>
-  <data name="InformPublisher" xml:space="preserve">
-    <value>You must enter a publisher for the book.</value>
-  </data>
-  <data name="InformStorageQty" xml:space="preserve">
-    <value>You must enter the quantity of the book in stock.</value>
-  </data>
-  <data name="InvalidBookTitle" xml:space="preserve">
-    <value>The title must contain 3 to 200 characters.</value>
-  </data>
-  <data name="InvalidDate" xml:space="preserve">
-    <value>You must enter the date of the book.</value>
-  </data>
-  <data name="InvalidIsbn" xml:space="preserve">
-    <value>The ISBN must contain 10 to 12 characters.</value>
-  </data>
-  <data name="InvalidName" xml:space="preserve">
-    <value>The name must contain 3 to 150 characters.</value>
-  </data>
-  <data name="PublisherNotFound" xml:space="preserve">
-    <value>Failed to retrieve requested publisher.</value>
+  <data name="SuccessfulyDelete" xml:space="preserve">
+    <value>The book has been deleted successfully.</value>
   </data>
 </root>

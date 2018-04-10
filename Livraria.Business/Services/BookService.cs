@@ -26,9 +26,14 @@ namespace Livraria.Business.Services
             _publisherRepository = publisherRepository;
         }
 
+        public List<Book> GetAll()
+        {
+            return _repository.Get();
+        }
+
         public Book GetById(int id)
         {
-            if (id != -1)
+            if (id <= 0)
                 throw new Exception(Errors.BookNotFound);
 
             return _repository.Get(id);
@@ -36,16 +41,18 @@ namespace Livraria.Business.Services
 
         public Book GetByIsbn(string isbn)
         {
-            return _repository.Get().Where(x => x.ISBN == isbn).FirstOrDefault();
+            if (isbn == null)
+                throw new Exception(Errors.InvalidIsbn);
+            return _repository.Get(isbn);
         }
 
-        public void Register(string title, string isbn, int storageQty, DateTime date, int authorId, int categoryId, int publisherId)
+        public void Register(string title, string isbn, int storageQty, int authorId, int categoryId, int publisherId)
         {
-            var hasBook = GetByIsbn(isbn);
+            var hasBook = _repository.Get(isbn);
             if (hasBook != null)
                 throw new Exception(Errors.DuplicatedIsbn);
 
-            var book = new Book(title, isbn, storageQty, date);
+            var book = new Book(title, isbn, storageQty);
             book.Author = _authorRepository.Get(authorId);
             book.Category = _categoryRepository.Get(categoryId);
             book.Publisher = _publisherRepository.Get(publisherId);
@@ -54,11 +61,11 @@ namespace Livraria.Business.Services
             _repository.Create(book);
         }
 
-        public void ChangeInformation(int id, string title, string isbn, int storageQty, DateTime date, int authorId, int categoryId, int publisherId)
+        public void ChangeInformation(int id, string title, string isbn, int storageQty, int authorId, int categoryId, int publisherId)
         {
             var book = GetById(id);
 
-            book.ChangeDetails(title,isbn,storageQty,date);
+            book.ChangeDetails(title,isbn,storageQty);
             book.Author = _authorRepository.Get(authorId);
             book.Category = _categoryRepository.Get(categoryId);
             book.Publisher = _publisherRepository.Get(publisherId);

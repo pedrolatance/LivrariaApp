@@ -14,11 +14,15 @@ namespace Livraria.Infraestructure.Repositories
         {
             this._context = context;
         }
-                        
 
         public List<Book> Get()
         {
-            return _context.Books.OrderBy(x=>x.Title).ToList();
+            return _context.Books
+                .Include("Author")
+                .Include("Category")
+                .Include("Publisher")
+                .OrderBy(x => x.Title)
+                .ToList();
         }
 
         public Book Get(int id)
@@ -31,6 +35,16 @@ namespace Livraria.Infraestructure.Repositories
                 .FirstOrDefault();
         }
 
+        public Book Get(string isbn)
+        {
+            return _context.Books
+                .Include("Category")
+                .Include("Author")
+                .Include("Publisher")
+                .Where(x => x.ISBN == isbn)
+                .FirstOrDefault();
+        }
+
         public void Create(Book book)
         {
             _context.Books.Add(book);
@@ -40,7 +54,7 @@ namespace Livraria.Infraestructure.Repositories
         public void Update(Book book)
         {
             _context.Entry<Book>(book).State = System.Data.Entity.EntityState.Modified;
-
+            _context.SaveChanges();
         }
 
         public void Delete(Book book)
@@ -53,6 +67,7 @@ namespace Livraria.Infraestructure.Repositories
         {
             _context.Dispose();
         }
+
 
     }
 }

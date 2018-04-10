@@ -52,9 +52,9 @@
     <Compile Include="Data\Map\BookMap.cs" />
     <Compile Include="Data\Map\CategoryMap.cs" />
     <Compile Include="Data\Map\PublisherMap.cs" />
-    <Compile Include="Migrations\201804091426359_InitialCreate.cs" />
-    <Compile Include="Migrations\201804091426359_InitialCreate.Designer.cs">
-      <DependentUpon>201804091426359_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201804100459412_InitialCreate.cs" />
+    <Compile Include="Migrations\201804100459412_InitialCreate.Designer.cs">
+      <DependentUpon>201804100459412_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,8 +74,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804091426359_InitialCreate.resx">
-      <DependentUpon>201804091426359_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804100459412_InitialCreate.resx">
+      <DependentUpon>201804100459412_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

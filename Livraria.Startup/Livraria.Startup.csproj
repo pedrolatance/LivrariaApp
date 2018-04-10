@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EADA7FEC-6F0E-4F57-853C-1E08B355EEF9}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{D09CD46C-CB98-45DB-B484-9FBFC6AABB01}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Livraria.Startup</RootNamespace>
     <AssemblyName>Livraria.Startup</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -70,10 +68,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Livraria.Business\Livraria.Business.csproj">
+      <Project>{204498BB-1674-42EC-A544-8C7526E4B220}</Project>
+      <Name>Livraria.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Livraria.Domain\Livraria.Domain.csproj">
       <Project>{d02fdda1-b24a-43fe-85eb-199aa00b2f08}</Project>
       <Name>Livraria.Domain</Name>

@@ -8,6 +8,7 @@ namespace Livraria.Domain.Contracts.Repositories
     {
         List<Book> Get();
         Book Get(int id);
+        Book Get(string isbn);
         void Create(Book book);
         void Update(Book book);
         void Delete(Book book);

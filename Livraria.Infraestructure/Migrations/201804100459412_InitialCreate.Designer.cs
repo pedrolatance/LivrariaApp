@@ -13,7 +13,7 @@ namespace Livraria.Infraestructure.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201804091426359_InitialCreate"; }
+            get { return "201804100459412_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

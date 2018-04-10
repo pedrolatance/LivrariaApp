@@ -8,12 +8,11 @@ namespace Livraria.Domain.Models
     {
         #region Ctor
         protected Book() { }
-        public Book(string title, string isbn,int storageQty, DateTime releaseDate)
+        public Book(string title, string isbn,int storageQty)
         {
             this.Title = title;
             this.ISBN = isbn;
             this.StorageQty = storageQty;
-            this.ReleaseDate = releaseDate;
         }
         #endregion
 
@@ -22,7 +21,6 @@ namespace Livraria.Domain.Models
         public string Title { get; private set; }
         public string ISBN { get; private set; }
         public int StorageQty { get; private set; }
-        public DateTime ReleaseDate { get; private set; }
 
         public Category Category { get; set; }
         public Publisher Publisher { get; set; }
@@ -35,15 +33,13 @@ namespace Livraria.Domain.Models
             AssertionConcern.AssertArgumentLength(this.Title, 3, 200, Errors.InvalidBookTitle);
             AssertionConcern.AssertArgumentLength(this.ISBN, 10, 12, Errors.InvalidIsbn);
             AssertionConcern.AssertArgumentNotNull(this.StorageQty, Errors.InformStorageQty);
-            AssertionConcern.AssertArgumentNotNull(this.ReleaseDate, Errors.InvalidDate);
         }
 
-        public void ChangeDetails(string title, string isbn, int storageQty, DateTime date)
+        public void ChangeDetails(string title, string isbn, int storageQty)
         {
             this.Title = title;
             this.ISBN = isbn;
             this.StorageQty = storageQty;
-            this.ReleaseDate = date;
         }
         #endregion
 

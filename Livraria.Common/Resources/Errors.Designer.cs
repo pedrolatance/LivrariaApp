@@ -61,6 +61,15 @@ namespace Livraria.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to retrieve requested author..
+        /// </summary>
+        public static string AuthorNotFound {
+            get {
+                return ResourceManager.GetString("AuthorNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The book is not found..
         /// </summary>
         public static string BookNotFound {
@@ -70,11 +79,29 @@ namespace Livraria.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to retrieve requested category..
+        /// </summary>
+        public static string CategoryNotFound {
+            get {
+                return ResourceManager.GetString("CategoryNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A book with this ISBN already exists..
         /// </summary>
         public static string DuplicatedIsbn {
             get {
                 return ResourceManager.GetString("DuplicatedIsbn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The given name already exists..
+        /// </summary>
+        public static string DuplicatedName {
+            get {
+                return ResourceManager.GetString("DuplicatedName", resourceCulture);
             }
         }
         
@@ -138,6 +165,15 @@ namespace Livraria.Common.Resources {
         public static string InvalidName {
             get {
                 return ResourceManager.GetString("InvalidName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to retrieve requested publisher..
+        /// </summary>
+        public static string PublisherNotFound {
+            get {
+                return ResourceManager.GetString("PublisherNotFound", resourceCulture);
             }
         }
     }

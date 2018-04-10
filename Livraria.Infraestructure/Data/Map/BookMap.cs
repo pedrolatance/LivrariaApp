@@ -25,10 +25,6 @@ namespace Livraria.Infraestructure.Data.Map
             Property(x => x.StorageQty)
                 .IsRequired();
 
-            Property(x => x.ReleaseDate)
-                .HasColumnType("datetime2");
-
-
             HasRequired(x => x.Category);
             HasRequired(x => x.Publisher);
             HasRequired(x => x.Author);

@@ -51,6 +51,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Errors.pt-BR.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Msgs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Msgs.resx</DependentUpon>
+    </Compile>
     <Compile Include="Validation\AssertionConcern.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +66,10 @@
     <EmbeddedResource Include="Resources\Errors.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Errors.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Msgs.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Msgs.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
