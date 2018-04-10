@@ -47,6 +47,31 @@ namespace Livraria.Api.Controllers
         }
         #endregion
 
+        #region GetById Method
+        [HttpGet]
+        [DeflateCompression]
+        [CacheOutput(ClientTimeSpan = 100, ServerTimeSpan = 100)]
+        public Task<HttpResponseMessage> Get(int id)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+
+            try
+            {
+                var data = _service.GetById(id);
+                response = Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                response = Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
+
+            var tsc = new TaskCompletionSource<HttpResponseMessage>();
+            tsc.SetResult(response);
+            return tsc.Task;
+        }
+        #endregion
+
+
         #region Resgister Method
         [HttpPost]
         public Task<HttpResponseMessage> Post(RegisterAuthorModel model)
